@@ -1,4 +1,4 @@
-import { StyleSheet,  View, ImageBackground, Button, Linking, } from 'react-native';
+import { StyleSheet,  View, ImageBackground, Button, Linking, Text } from 'react-native';
 import React,{useState} from 'react'
 
 
@@ -21,8 +21,10 @@ const openme=()=>{
   return (
     <View style={styles.container}>
         <ImageBackground source={image} style={styles.im} resizeMode="cover">
+          <Text style={styles.name}>Я, Мельников Александр</Text>
+          <Text style={styles.front}>Фронтенд-разработчик из города Казани</Text>
           <View style={styles.button}>
-              <Button title='портфолио' onPress={openurl}  color={'#ff8c00'} />
+              <Button title='портфолио' onPress={openurl}  color={'#ff8c00'} borderRadius={17} />
           </View>
           <View style={styles.bume}>
             <Button title='про меня' color={'#ff8c00'}  onPress={openme} style={styles.button} />
@@ -52,11 +54,22 @@ const styles = StyleSheet.create({
     left: 10,
     justifyContent: 'space-around',
     color: '#ff8c00'
+    
   },
   bume:{
-    bottom: 400,
+    bottom: 380,
     width: 150,
     left: 235,
     justifyContent: 'space-around'
+  },
+  name:{
+    textAlign:'center',
+    top: 180,
+    fontSize: 25,
+    color:'black'
+  },
+  front:{
+    top:180,
+    fontSize: 16
   }
 });
