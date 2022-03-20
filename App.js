@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     
   },
   bume:{
-    bottom: 380,
+    bottom: 375,
     width: 150,
     left: 235,
     justifyContent: 'space-around'
