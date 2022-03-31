@@ -56,7 +56,7 @@ export default function Homescreen({navigation}) {
         
       },
       bume:{
-        bottom: 274,
+        bottom: 331,
         width: 150,
         left: 235,
         justifyContent: 'space-around'
