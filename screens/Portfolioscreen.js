@@ -1,6 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet,  View, ScrollView, Image, Button, Linking, Text,  TouchableOpacity } from 'react-native';
+import Menu from '../menu';
+
+
 
 
 
@@ -41,6 +45,7 @@ export default function Portfolioscreen(){
 
 
     return(
+      <View>
         <ScrollView>
             <TouchableOpacity onPress={opentat}>
                 <View style={styles.port}>
@@ -144,13 +149,15 @@ export default function Portfolioscreen(){
             </TouchableOpacity>
         </ScrollView> 
         
+        </View>
         
-
-
-                
+      
     
     )
+    
 }
+
+
 
 
 
@@ -160,8 +167,9 @@ const styles=StyleSheet.create({
         overflow: 'hidden'
     },
     tinyLogo: {
-        width: '100%',
-        height: 350,
+        left: 70,
+        width: 250,
+        height: 250,
         borderRadius: 20,
         padding: 35,
         alignItems: "center",

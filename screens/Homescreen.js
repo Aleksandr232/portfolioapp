@@ -7,14 +7,6 @@ const image={uri:'https://st3.depositphotos.com/1006362/12625/i/600/depositphoto
 export default function Homescreen({navigation}) {
     
 
-
-    const openurl=()=>{
-      Linking.openURL('https://meportfolio.vercel.app/meportfolio').catch(err => console.error('An error occurred', err));
-    }
-    
-    const openme=()=>{
-      Linking.openURL('https://meportfolio.vercel.app/about').catch(err => console.error('An error occurred', err));
-    }
     
       return (
         <View style={styles.container}>
@@ -25,7 +17,7 @@ export default function Homescreen({navigation}) {
                   <Button title='портфолио' onPress={()=>navigation.navigate('Портфолио')}  color={'#ff8c00'} borderRadius={17} />
               </View>
               <View style={styles.bume}>
-                <Button title='про меня' color={'#ff8c00'}  onPress={openme} style={styles.button} />
+                <Button title='про меня' color={'#ff8c00'}  onPress={()=>console.log('hi')} style={styles.button} />
               </View>
                 
             </ImageBackground>
@@ -56,7 +48,7 @@ export default function Homescreen({navigation}) {
         
       },
       bume:{
-        bottom: 274,
+        bottom: 332,
         width: 150,
         left: 235,
         justifyContent: 'space-around'
