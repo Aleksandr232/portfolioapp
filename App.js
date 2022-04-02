@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Homescreen from './screens/Homescreen';
 import Portfolioscreen from './screens/Portfolioscreen';
+import Mescreen from './screens/Mescreen';
 
 
 
@@ -29,6 +30,16 @@ function App() {
             backgroundColor: '#f8f8ff',
             }
           }}/>
+          <Stack.Screen name='Про меня'    component={Mescreen}
+          options={{
+          title: 'Про меня',
+          headerStyle: 
+            {
+            backgroundColor: '#f8f8ff',
+            }
+          }}/>
+        
+
         
       </Stack.Navigator>
     </NavigationContainer>

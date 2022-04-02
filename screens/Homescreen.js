@@ -17,7 +17,7 @@ export default function Homescreen({navigation}) {
                   <Button title='портфолио' onPress={()=>navigation.navigate('Портфолио')}  color={'#ff8c00'} borderRadius={17} />
               </View>
               <View style={styles.bume}>
-                <Button title='про меня' color={'#ff8c00'}  onPress={()=>console.log('hi')} style={styles.button} />
+                <Button title='про меня' color={'#ff8c00'}  onPress={()=>navigation.navigate('Про меня')}  />
               </View>
                 
             </ImageBackground>
@@ -39,7 +39,6 @@ export default function Homescreen({navigation}) {
         height:'100%'
       },
       button:{
-        flex:1,
         width: 150,
         left: 10,
         justifyContent: 'space-around',
@@ -48,19 +47,19 @@ export default function Homescreen({navigation}) {
         
       },
       bume:{
-        bottom: 332,
+        bottom: 36,
         width: 150,
         left: 235,
         justifyContent: 'space-around'
       },
       name:{
         textAlign:'center',
-        top: 180,
+        bottom: 180,
         fontSize: 25,
         color:'black'
       },
       front:{
-        top: 180,
+        bottom: 180,
         fontSize: 16
       }
     });
