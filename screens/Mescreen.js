@@ -1,50 +1,103 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React, {useRef, useState, useEffect} from 'react';
+import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import {
-  StyleSheet,
   View,
-  ScrollView,
-  Image,
-  Button,
-  Linking,
   Text,
+  Dimensions,
+  StyleSheet,
   TouchableOpacity,
-} from "react-native";
+  Platform,
+} from 'react-native';
 
-export default function Mescreen() {
+const ENTRIES1 = [
+  {
+    title: 'Beautiful and dramatic Antelope Canyon',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+    illustration: 'https://i.imgur.com/UYiroysl.jpg',
+  },
+  {
+    title: 'Earlier this morning, NYC',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    illustration: 'https://i.imgur.com/UPrs1EWl.jpg',
+  },
+  {
+    title: 'White Pocket Sunset',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
+    illustration: 'https://i.imgur.com/MABUbpDl.jpg',
+  },
+  {
+    title: 'Acrocorinth, Greece',
+    subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
+    illustration: 'https://i.imgur.com/KZsmUi2l.jpg',
+  },
+  {
+    title: 'The lone tree, majestic landscape of New Zealand',
+    subtitle: 'Lorem ipsum dolor sit amet',
+    illustration: 'https://i.imgur.com/2nCt3Sbl.jpg',
+  },
+];
+const {width: screenWidth} = Dimensions.get('window');
+
+const Mescreen = props => {
+  const [entries, setEntries] = useState([]);
+  const carouselRef = useRef(null);
+
+ 
+
+  useEffect(() => {
+    setEntries(ENTRIES1);
+  }, []);
+
+  const renderItem = ({item, index}, parallaxProps) => {
+    return (
+      <View style={styles.item}>
+        <ParallaxImage
+          source={{uri: item.illustration}}
+          containerStyle={styles.imageContainer}
+          style={styles.image}
+          parallaxFactor={0.4}
+          {...parallaxProps}
+        />
+        <Text style={styles.title} numberOfLines={2}>
+          {item.title}
+        </Text>
+      </View>
+    );
+  };
+
   return (
-    <ScrollView>
-      <Image
-        style={styles.img}
-        source={{
-          uri: "https://meportfolio.vercel.app/static/media/main_photo.e0291e7af039d255794e.jpg",
-        }}
+    <View style={styles.container}>
+      <Carousel
+        ref={carouselRef}
+        sliderWidth={screenWidth}
+        sliderHeight={screenWidth}
+        itemWidth={screenWidth - 60}
+        data={entries}
+        renderItem={renderItem}
+        hasParallaxImages={true}
       />
-      <Text style={styles.text}>
-        Всем привет! {"\n"}Меня зовут Александр!{"\n"} Я начинающий фронтенд разработчик!
-        Совсем недавно, я даже не знал что такое HTML{"\n"} Но, было огромное желание
-        погрузиться в эту реальность... С юного возроста я занимаюсь греблей.
-        Это очень красивый вид спорта, который воспитывает тебя не только
-        предылевать усталость мышечнных волкон, но и волю. Гребля это не только
-        красивый вид спорта, но и очень комадный спорт. {"\n"} Вы просто представьте,
-        когда 9 человек гребут в одной лодке к своей мечте! Завораживающе! Не
-        правда ли?
-      </Text>
-    </ScrollView>
+    </View>
   );
-}
+};
+
+export default Mescreen;
 
 const styles = StyleSheet.create({
-  img: {
-    top: 10,
-    width: 350,
-    height: 350,
-    borderRadius: 20,
+  container: {
+    flex: 1,
   },
-  text: {
-    top: 10,
-    fontSize: 24,
-    fontStyle: 'italic',
-    
+  item: {
+    width: screenWidth - 60,
+    height: screenWidth - 60,
+  },
+  imageContainer: {
+    flex: 1,
+    marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
+    backgroundColor: 'white',
+    borderRadius: 8,
+  },
+  image: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
   },
 });
