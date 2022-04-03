@@ -95,7 +95,7 @@ export default Mescreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    top: 40,
+    top: 100,
   },
   item: {
     width: screenWidth - 60,
