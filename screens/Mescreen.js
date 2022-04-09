@@ -68,7 +68,7 @@ const Mescreen = (props) => {
           parallaxFactor={0}
           {...parallaxProps}
         />
-        <Text style={styles.title} numberOfLines={4}>
+        <Text style={styles.title} numberOfLines={6}>
           {item.title}
         </Text>
       </View>
